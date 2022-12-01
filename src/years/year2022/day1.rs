@@ -6,24 +6,24 @@ pub fn part1(file: &str) -> i32 {
     let reader = BufReader::new(&file);
     let lines = reader.lines();
 
-    let mut currentElf: i32 = 0;
-    let mut maxElf: i32 = 0;
+    let mut current_elf: i32 = 0;
+    let mut max_elf: i32 = 0;
 
     for (_index, line) in lines.enumerate() {
         let line = line.unwrap();
 
         if line.is_empty() {
-            if currentElf > maxElf {
-                maxElf = currentElf;
+            if current_elf > max_elf {
+                max_elf = current_elf;
             }
-            currentElf = 0;
+            current_elf = 0;
             continue;
         }
 
-        currentElf += line.parse::<i32>().unwrap();
+        current_elf += line.parse::<i32>().unwrap();
     }
 
-    return maxElf;
+    return max_elf;
 }
 
 pub fn part2(file: &str) -> i32 {
@@ -31,36 +31,37 @@ pub fn part2(file: &str) -> i32 {
     let reader = BufReader::new(&file);
     let lines = reader.lines();
 
-    let mut currentElf: i32 = 0;
-    let mut maxElf1: i32 = 0;
-    let mut maxElf2: i32 = 0;
-    let mut maxElf3: i32 = 0;
+    let mut current_elf: i32 = 0;
+    let mut max_elf1: i32 = 0;
+    let mut max_elf2: i32 = 0;
+    let mut max_elf3: i32 = 0;
 
     for (_index, line) in lines.enumerate() {
         let line = line.unwrap();
+        
         println!("line {}", line);
-        println!("currentElf {}", currentElf);
-        println!("maxElf1 {}, maxElf2 {}, maxElf3 {}\n", maxElf1, maxElf2, maxElf3);
+        println!("current_elf {}", current_elf);
+        println!("max_elf1 {}, max_elf2 {}, max_elf3 {}\n", max_elf1, max_elf2, max_elf3);
 
         if line.is_empty() {
-            if currentElf > maxElf1 {
-                maxElf3 = maxElf2;
-                maxElf2 = maxElf1;
-                maxElf1 = currentElf;
-            } else if currentElf > maxElf2 {
-                maxElf3 = maxElf2;
-                maxElf2 = currentElf;
-            } else if currentElf > maxElf3 {
-                maxElf3 = currentElf;
+            if current_elf > max_elf1 {
+                max_elf3 = max_elf2;
+                max_elf2 = max_elf1;
+                max_elf1 = current_elf;
+            } else if current_elf > max_elf2 {
+                max_elf3 = max_elf2;
+                max_elf2 = current_elf;
+            } else if current_elf > max_elf3 {
+                max_elf3 = current_elf;
             }
-            currentElf = 0;
+            current_elf = 0;
             continue;
         }
 
-        currentElf += line.parse::<i32>().unwrap();
+        current_elf += line.parse::<i32>().unwrap();
     }
 
-    return maxElf1 + maxElf2 + maxElf3;
+    return max_elf1 + max_elf2 + max_elf3;
 }
 
 #[cfg(test)]
