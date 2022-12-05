@@ -57,9 +57,7 @@ pub fn part2(file: &str) -> i32 {
     for (index, line) in lines.enumerate() {
         let line = line.unwrap();
         let line_letters: HashSet<char> = HashSet::from_iter(line.chars());
-
-        println!("line: {}, group_letters.len(): {}", line, group_letters.len());
-
+        
         group_letters = line_letters.iter().fold(group_letters.clone(), |mut map, c | {
             *map.entry(*c).or_insert(0) += 1;
             map
@@ -95,6 +93,6 @@ mod tests {
     #[test]
     fn test_part2() {
         assert_eq!(part2("resources/2022/day3-example.txt"), 70);
-        assert_eq!(part2("resources/2022/day3.txt"), 1);
+        assert_eq!(part2("resources/2022/day3.txt"), 2620);
     }
 }
