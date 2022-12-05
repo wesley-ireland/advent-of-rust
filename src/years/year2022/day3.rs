@@ -20,16 +20,16 @@ pub fn part1(file: &str) -> i32 {
 
     for (_index, line) in lines.enumerate() {
         let line = line.unwrap();
-        let mut letter_map: HashMap<char, i32> = HashMap::new();
+        let mut letter_set: HashSet<char> = HashSet::new();
 
         let compartment_one = &line[0..line.len() / 2];
         let compartment_two = &line[line.len() / 2..line.len()];
 
         for c in compartment_one.chars() {
-            letter_map.insert(c, 1);
+            letter_set.insert(c);
         }
         for c in compartment_two.chars() {
-            match letter_map.get(&c) {
+            match letter_set.get(&c) {
                 Some(_) => {
                     priority_sum += get_priority(&c);
                     break;
@@ -57,7 +57,7 @@ pub fn part2(file: &str) -> i32 {
     for (index, line) in lines.enumerate() {
         let line = line.unwrap();
         let line_letters: HashSet<char> = HashSet::from_iter(line.chars());
-        
+
         group_letters = line_letters.iter().fold(group_letters.clone(), |mut map, c | {
             *map.entry(*c).or_insert(0) += 1;
             map
