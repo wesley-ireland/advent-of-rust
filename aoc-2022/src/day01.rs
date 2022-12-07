@@ -71,25 +71,25 @@ mod tests {
 
     #[test]
     fn test_part1_example() {
-        let result = part1("resources/2022/day1-example.txt");
+        let result = part1("input/2022/day1-example.txt");
         assert_eq!(result, 24000);
     }
 
     #[test]
     fn test_part1() {
-        let result = part1("resources/2022/day1.txt");
+        let result = part1("input/2022/day1.txt");
         assert_eq!(result, 70698);
     }
 
     #[test]
     fn test_part2_example() {
-        let result = part2("resources/2022/day1-example.txt");
+        let result = part2("input/2022/day1-example.txt");
         assert_eq!(result, 45000);
     }
 
     #[test]
     fn test_part2() {
-        let result = part2("resources/2022/day1.txt");
+        let result = part2("input/2022/day1.txt");
         assert_eq!(result, 206643);
     }
 }

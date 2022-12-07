@@ -86,13 +86,13 @@ mod tests {
 
     #[test]
     fn test_part1() {
-        assert_eq!(part1("resources/2022/day3-example.txt"), 157);
-        assert_eq!(part1("resources/2022/day3.txt"), 8123);
+        assert_eq!(part1("input/2022/day3-example.txt"), 157);
+        assert_eq!(part1("input/2022/day3.txt"), 8123);
     }
 
     #[test]
     fn test_part2() {
-        assert_eq!(part2("resources/2022/day3-example.txt"), 70);
-        assert_eq!(part2("resources/2022/day3.txt"), 2620);
+        assert_eq!(part2("input/2022/day3-example.txt"), 70);
+        assert_eq!(part2("input/2022/day3.txt"), 2620);
     }
 }

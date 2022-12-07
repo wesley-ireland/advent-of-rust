@@ -1,7 +1,6 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::str::FromStr;
-use crate::years::year2022::day2::YourThrow::{Paper, Rock, Scissors};
 
 // A for Rock, B for Paper, and C for Scissors - opponent
 // X for Rock, Y for Paper, and Z for Scissors - you
@@ -219,9 +218,9 @@ trait ThrowScore {
 impl ThrowScore for YourThrow {
     fn score(&self) -> i32 {
         match self {
-            Rock => 1,
-            Paper => 2,
-            Scissors => 3
+            YourThrow::Rock => 1,
+            YourThrow::Paper => 2,
+            YourThrow::Scissors => 3
         }
     }
 }
@@ -235,23 +234,23 @@ impl DetermineThrow for RockPaperScissorsRoundPart2 {
         match self.opponent_throw {
             OpponentThrow::Rock => {
                 match self.round_result {
-                    RoundResult::Lose => Scissors,
-                    RoundResult::Draw => Rock,
-                    RoundResult::Win => Paper
+                    RoundResult::Lose => YourThrow::Scissors,
+                    RoundResult::Draw => YourThrow::Rock,
+                    RoundResult::Win => YourThrow::Paper
                 }
             }
             OpponentThrow::Paper => {
                 match self.round_result {
-                    RoundResult::Lose => Rock,
-                    RoundResult::Draw => Paper,
-                    RoundResult::Win => Scissors
+                    RoundResult::Lose => YourThrow::Rock,
+                    RoundResult::Draw => YourThrow::Paper,
+                    RoundResult::Win => YourThrow::Scissors
                 }
             }
             OpponentThrow::Scissors => {
                 match self.round_result {
-                    RoundResult::Lose => Paper,
-                    RoundResult::Draw => Scissors,
-                    RoundResult::Win => Rock
+                    RoundResult::Lose => YourThrow::Paper,
+                    RoundResult::Draw => YourThrow::Scissors,
+                    RoundResult::Win => YourThrow::Rock
                 }
             }
         }
@@ -267,23 +266,23 @@ impl RoundGetResult for RockPaperScissorsRoundPart1 {
         match self.opponent_throw {
             OpponentThrow::Rock => {
                 match self.your_throw {
-                    Rock => RoundResult::Draw,
-                    Paper => RoundResult::Win,
-                    Scissors => RoundResult::Lose
+                    YourThrow::Rock => RoundResult::Draw,
+                    YourThrow::Paper => RoundResult::Win,
+                    YourThrow::Scissors => RoundResult::Lose
                 }
             }
             OpponentThrow::Paper => {
                 match self.your_throw {
-                    Rock => RoundResult::Lose,
-                    Paper => RoundResult::Draw,
-                    Scissors => RoundResult::Win
+                    YourThrow::Rock => RoundResult::Lose,
+                    YourThrow::Paper => RoundResult::Draw,
+                    YourThrow::Scissors => RoundResult::Win
                 }
             }
             OpponentThrow::Scissors => {
                 match self.your_throw {
-                    Rock => RoundResult::Win,
-                    Paper => RoundResult::Lose,
-                    Scissors => RoundResult::Draw
+                    YourThrow::Rock => RoundResult::Win,
+                    YourThrow::Paper => RoundResult::Lose,
+                    YourThrow::Scissors => RoundResult::Draw
                 }
             }
         }
@@ -341,25 +340,25 @@ mod tests {
 
     #[test]
     fn test_part1() {
-        assert_eq!(part1("resources/2022/day2-example.txt"), 15);
-        assert_eq!(part1("resources/2022/day2.txt"), 14297);
+        assert_eq!(part1("input/2022/day2-example.txt"), 15);
+        assert_eq!(part1("input/2022/day2.txt"), 14297);
     }
 
     #[test]
     fn test_part1_again() {
-        assert_eq!(part1_again("resources/2022/day2-example.txt"), 15);
-        assert_eq!(part1_again("resources/2022/day2.txt"), 14297);
+        assert_eq!(part1_again("input/2022/day2-example.txt"), 15);
+        assert_eq!(part1_again("input/2022/day2.txt"), 14297);
     }
 
     #[test]
     fn test_part2() {
-        assert_eq!(part2("resources/2022/day2-example.txt"), 12);
-        assert_eq!(part2("resources/2022/day2.txt"), 10498);
+        assert_eq!(part2("input/2022/day2-example.txt"), 12);
+        assert_eq!(part2("input/2022/day2.txt"), 10498);
     }
 
     #[test]
     fn test_part2_again() {
-        assert_eq!(part2_again("resources/2022/day2-example.txt"), 12);
-        assert_eq!(part2_again("resources/2022/day2.txt"), 10498);
+        assert_eq!(part2_again("input/2022/day2-example.txt"), 12);
+        assert_eq!(part2_again("input/2022/day2.txt"), 10498);
     }
 }

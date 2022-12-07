@@ -188,11 +188,11 @@ mod tests {
 
     #[test]
     fn test_part1() {
-        assert_eq!(part1("resources/2022/day5.txt"), "RLFNRTNFB");
+        assert_eq!(part1("input/2022/day5.txt"), "RLFNRTNFB");
     }
 
     #[test]
     fn test_part2() {
-        assert_eq!(part2("resources/2022/day5.txt"), "MHQTLJRLB");
+        assert_eq!(part2("input/2022/day5.txt"), "MHQTLJRLB");
     }
 }
